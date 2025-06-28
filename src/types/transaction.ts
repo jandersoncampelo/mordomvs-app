@@ -6,8 +6,9 @@ export type IncomePaymentType = "single" | "fixed-recurring"
 export interface BaseTransaction {
   id?: string
   amount: number
+  transactionDate: string
+  paymentDate: string
   description: string
-  date: string
   category: string
 }
 

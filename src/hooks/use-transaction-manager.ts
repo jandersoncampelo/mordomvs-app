@@ -30,9 +30,8 @@ export function useTransactionManager(options: UseTransactionManagerOptions = {}
   const hasTransactions = transactions.length > 0
   const selectedCount = selectedTransactions.size
   const isLoading = loadingTransactions || creating || updating || deleting
-
   // Error handling
-  const currentError = transactionsError || createError || updateError || deleteError
+  const currentError = transactionsError ?? createError ?? updateError ?? deleteError
 
   // Filter operations
   const updateFilters = useCallback((newFilters: Partial<TransactionFilters>) => {
@@ -180,7 +179,7 @@ export function useTransactionManager(options: UseTransactionManagerOptions = {}
         .map(t => t.category)
         .filter(Boolean)
     )
-    return Array.from(categories).sort()
+    return Array.from(categories).sort((a, b) => a.localeCompare(b))
   }, [transactions])
 
   // Refresh function

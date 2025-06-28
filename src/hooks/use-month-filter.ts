@@ -15,7 +15,7 @@ export function useMonthFilter(transactions: Transaction[]) {
 
   const filteredTransactions = useMemo(() => {
     return transactions.filter((transaction) => {
-      const transactionDate = new Date(transaction.date)
+      const transactionDate = new Date(transaction.transactionDate)
       const transactionMonth = String(transactionDate.getMonth() + 1).padStart(2, "0")
       const transactionYear = transactionDate.getFullYear().toString()
 
@@ -40,7 +40,7 @@ export function useMonthFilter(transactions: Transaction[]) {
   }, [filteredTransactions])
 
   const transactionDates = useMemo(() => {
-    return transactions.map((t) => t.date)
+    return transactions.map((t) => t.transactionDate)
   }, [transactions])
 
   return {
